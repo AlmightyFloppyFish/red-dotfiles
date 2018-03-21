@@ -1,0 +1,165 @@
+[bar/AlmightyFloppyFish]
+monitor = eDP-1
+width = 100%
+height = 23
+
+bottom = true
+
+border-top-size = 1
+border-color = #da0000
+
+background = #000000
+foreground = #da0000
+
+line-color = 
+line-size = 2
+
+spacing = 2
+padding-right = 5
+module-margin = 4
+
+font-0 = "xos4 Terminus:pixelsize=12;2"
+font-1 = MaterialIcons:size=10;2
+font-2 = "xos4 Terminus:pixelsize=14;2"
+font-3 = FontAwesome:size=10;2
+
+modules-left = i3
+modules-right = volume backlight wireless-network wired-network battery date
+
+[module/i3]
+type = internal/i3
+
+format = <label-state> <label-mode>
+
+enable-click = false
+enable-scroll = false
+strip-wsnumbers = true
+pin-workspaces = true
+index-sort = true
+
+ws-icon-8 = 9;
+ws-icon-7 = 8;
+ws-icon-3 = 4;
+ws-icon-0 = 1;I
+ws-icon-1 = 2;II
+ws-icon-2 = 3;III
+ws-icon-4 = 5;V
+ws-icon-5 = 6;VI
+ws-icon-6 = 7;VII
+ws-icon-9 = 10;
+
+label-focused-padding = 2
+label-focused-foreground = #FFF
+;label-focused-background = #0d0d0d
+label-focused-underline = #da00da
+label-focused = %icon%
+
+label-unfocused-padding = 2
+label-unfocused = %icon%
+
+[module/backlight]
+type = internal/xbacklight
+format = <label><bar>
+label = 
+
+bar-width = 11
+bar-indicator = |
+bar-indicator-font = 3
+; bar-indicator-foreground = 
+bar-fill = ─
+bar-fill-font = 3
+bar-fill-foreground = #ffffffff
+bar-empty = ─
+bar-empty-font = 3
+bar-empty-foreground = #44
+
+[module/battery]
+type = internal/battery
+full-at = 98
+
+label-charging = %{F#FFF}%percentage%%%{F-}
+label-discharging = %{F#FFF}%percentage%%%{F-}
+label-full = %{F#FFF}%percentage%%%{F-}
+
+format-charging =  <animation-charging><label-charging>
+format-discharging = <ramp-capacity><label-discharging>
+format-full =  <ramp-capacity><label-full>
+
+ramp-capacity-0 =  
+ramp-capacity-0-foreground = #da00da
+ramp-capacity-1 =  
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+bar-capacity-width = 10
+bar-capacity-format = %{+u}%{+o}%fill%%empty%%{-u}%{-o}
+bar-capacity-fill = █
+bar-capacity-fill-foreground = #FFFFFF
+bar-capacity-fill-font = 3
+bar-capacity-empty = █
+bar-capacity-empty-font = 3
+bar-capacity-empty-foreground = #FFFFFF
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-framerate = 750
+
+[module/date]
+type = internal/date
+date = %{F#1a1a1a}[ %%{F#99}%Y-%m-%d%%{F-}  %%{F#fff}%H:%M%%{F#1a1a1a} ]%{F-}
+;date = %%{F#99}%Y-%m-%d%%{F-}  %%{F#fff}%H:%M%%{F-}
+
+[module/wireless-network]
+type = internal/network
+interface = wlp2s0
+interval = 3.0
+ping-interval = 10
+
+label-active-font = 5
+
+format-connected = <label-connected>
+label-connected =  %{F#fff}%essid%%{F-}
+label-disconnected = 
+
+[module/wired-network]
+type = internal/network
+interface = enp0s31f6
+interval = 3.0
+
+label-connected = %{T3}%local_ip%%{T-}
+
+[module/volume]
+type = internal/pulseaudio
+speaker-mixer = Speaker
+
+label-active-font = 1
+
+format-volume = <ramp-volume><bar-volume>
+
+bar-volume-width = 11
+bar-volume-indicator = |
+bar-volume-indicator-font = 3
+bar-volume-fill = ─
+bar-volume-fill-font = 3
+bar-volume-fill-foreground = #ffffffff
+bar-volume-empty = ─
+bar-volume-empty-font = 3
+bar-volume-empty-foreground = #44
+
+label-muted = 
+label-muted-foreground = #aa
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+ramp-volume-3 = 
+
+
+[module/clock]
+type = internal/date
+interval = 2
+date = %%{F#999}%Y-%m-%d%%{F-}  %%{F#fff}%H:%M%%{F-}
